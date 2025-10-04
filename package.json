@@ -1,0 +1,49 @@
+{
+    "name": "opds-ts",
+    "version": "1.0.0",
+    "description": "A TypeScript library for generating OPDS feeds with full TypeScript support.",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "publish": "tsc && npm publish",
+        "format": "prettier --write 'src/**/*.{ts,tsx}'",
+        "test": "tsc && jest src/tests --config jest.config.js",
+        "testapp": "bun testapp/index.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KartoffelChipss/opds-ts.git"
+    },
+    "bugs": {
+        "url": "https://github.com/KartoffelChipss/opds-ts/issues"
+    },
+    "author": {
+        "name": "Jan Straßburger",
+        "email": "contact@strassburger.org",
+        "url": "https://strassburger.org/"
+    },
+    "keywords": [
+        "opds",
+        "typescript",
+        "library",
+        "feeds",
+        "ebook",
+        "catalog"
+    ],
+    "license": "MIT",
+    "readme": "README.md",
+    "packageManager": "pnpm@10.15.1",
+    "dependencies": {
+        "xmlbuilder2": "^3.1.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24.6.2",
+        "jest": "^30.2.0",
+        "prettier": "^3.6.2",
+        "ts-jest": "^29.4.4"
+    },
+    "peerDependencies": {
+        "typescript": "^5.6.2"
+    }
+}
