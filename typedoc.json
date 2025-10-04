@@ -1,0 +1,19 @@
+{
+    "out": "docs",
+    "name": "opds-ts",
+    "includeVersion": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "hideGenerator": true,
+    "plugin": ["typedoc-github-theme"],
+    "theme": "typedoc-github-theme",
+    "readme": "typedoc-readme.md",
+    "navigationLinks": {
+        "Discord": "https://strassburger.org/discord",
+        "NPM": "https://www.npmjs.com/package/opds-ts",
+        "GitHub": "https://github.com/KartoffelChipss/opds-ts"
+    },
+    "disableSources": true,
+    "entryPoints": ["src"],
+    "entryPointStrategy": "resolve"
+}

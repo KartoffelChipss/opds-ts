@@ -8,7 +8,9 @@
         "publish": "tsc && npm publish",
         "format": "prettier --write 'src/**/*.{ts,tsx}'",
         "test": "tsc && jest src/tests --config jest.config.js",
-        "testapp": "bun testapp/index.ts"
+        "testapp": "bun testapp/index.ts",
+        "docs": "typedoc --options typedoc.json",
+        "opendocs": "bun run docs && open ./docs/index.html"
     },
     "repository": {
         "type": "git",
@@ -41,7 +43,9 @@
         "@types/node": "^24.6.2",
         "jest": "^30.2.0",
         "prettier": "^3.6.2",
-        "ts-jest": "^29.4.4"
+        "ts-jest": "^29.4.4",
+        "typedoc": "^0.28.13",
+        "typedoc-github-theme": "^0.3.1"
     },
     "peerDependencies": {
         "typescript": "^5.6.2"
