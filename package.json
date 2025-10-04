@@ -2,7 +2,8 @@
     "name": "opds-ts",
     "version": "1.0.1",
     "description": "A TypeScript library for generating OPDS feeds with full TypeScript support.",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsc",
         "publish": "tsc && npm publish",
