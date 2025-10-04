@@ -62,11 +62,11 @@ export class Entry {
      * @param href - The URL of the image.
      * @returns The Entry instance (for chaining).
      */
-    addImage(href: string) {
+    addImage(href: string, type: string = 'image/jpeg') {
         return this.addLink({
             rel: 'http://opds-spec.org/image',
             href,
-            type: 'image/jpeg',
+            type,
         });
     }
 
@@ -75,11 +75,11 @@ export class Entry {
      * @param href - The URL of the thumbnail image.
      * @returns The Entry instance (for chaining).
      */
-    addThumbnail(href: string) {
+    addThumbnail(href: string, type: string = 'image/jpeg') {
         return this.addLink({
             rel: 'http://opds-spec.org/image/thumbnail',
             href,
-            type: 'image/jpeg',
+            type,
         });
     }
 
