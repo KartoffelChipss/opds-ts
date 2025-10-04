@@ -1,4 +1,5 @@
-tests/
+src/tests/
+dist/tests/
 testapp/
 jstestapp/
 examples/
