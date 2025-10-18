@@ -77,4 +77,4 @@ console.log(feed.getEntries());
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/KartoffelChipss/Typerinth/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/KartoffelChipss/opds-ts/blob/main/LICENSE) file for details.
