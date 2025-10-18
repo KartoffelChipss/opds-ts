@@ -27,6 +27,7 @@
         "type": "git",
         "url": "git+https://github.com/KartoffelChipss/opds-ts.git"
     },
+    "homepage": "https://opds.js.org/",
     "bugs": {
         "url": "https://github.com/KartoffelChipss/opds-ts/issues"
     },
