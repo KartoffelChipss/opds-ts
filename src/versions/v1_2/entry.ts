@@ -1,4 +1,9 @@
-import { EntryOptions, FeedKind, Link } from '../../model/types';
+import {
+    AcquisitionRel,
+    EntryOptions,
+    FeedKind,
+    Link,
+} from '../../model/types';
 import { EntryXmlSerializer } from '../../utils/xml/EntryXmlSerializer';
 
 /**
@@ -99,17 +104,21 @@ export class Entry {
     /**
      * Adds an acquisition link to the entry. This is a convenience method for adding an acquisition link with the appropriate rel. If openAccess is true, the rel will be set to open-access.
      * @param href - The URL of the acquisition link.
-     * @param type - The type of the acquisition link (e.g., application/epub+zip or application/x-cbz).
-     * @param openAccess - Whether the acquisition is open access.
+     * @param type - The content type of the acquisition link (e.g., application/epub+zip or application/x-cbz).
+     * @param aquisitionRel - The specific acquisition relation (e.g., buy, borrow, sample). OPDS acquisition relations: https://specs.opds.io/opds-1.2#521-acquisition-relations
      * @returns The Entry instance (for chaining).
      */
-    addAcquisition(href: string, type: string, openAccess = false) {
+    addAcquisition(
+        href: string,
+        contentTtype: string,
+        aquisitionRel?: AcquisitionRel
+    ) {
         return this.addLink({
-            rel: openAccess
-                ? 'http://opds-spec.org/acquisition/open-access'
+            rel: aquisitionRel
+                ? `http://opds-spec.org/acquisition/${aquisitionRel}`
                 : 'http://opds-spec.org/acquisition',
             href,
-            type,
+            type: contentTtype,
         });
     }
 
