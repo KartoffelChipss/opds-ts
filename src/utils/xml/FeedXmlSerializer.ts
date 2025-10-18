@@ -1,6 +1,6 @@
 import { Feed } from '../../versions/v1_2/feed';
 import { AtomFeedBuilder } from './AtomFeedBuilder';
-import { SerializationOptions } from './types';
+import { SerializationOptions } from '../../versions/v1_2/types';
 
 export class FeedXmlSerializer {
     constructor(private feed: Feed) {}

@@ -1,4 +1,10 @@
-import { AcquisitionRel, EntryOptions, FeedKind, Link } from './types';
+import {
+    AcquisitionRel,
+    EntryOptions,
+    FeedKind,
+    Link,
+    SerializationOptions,
+} from './types';
 import { EntryXmlSerializer } from '../../utils/xml/EntryXmlSerializer';
 import { EntryXmlParser } from '../../utils/xml/EntryXmlParser';
 
@@ -100,7 +106,7 @@ export class Entry {
     /**
      * Adds an acquisition link to the entry. This is a convenience method for adding an acquisition link with the appropriate rel. If openAccess is true, the rel will be set to open-access.
      * @param href - The URL of the acquisition link.
-     * @param type - The content type of the acquisition link (e.g., application/epub+zip or application/x-cbz).
+     * @param contentTtype - The content type of the acquisition link (e.g., application/epub+zip or application/x-cbz).
      * @param aquisitionRel - The specific acquisition relation (e.g., buy, borrow, sample). OPDS acquisition relations: https://specs.opds.io/opds-1.2#521-acquisition-relations
      * @returns The Entry instance (for chaining).
      */
@@ -209,14 +215,10 @@ export class Entry {
 
     /**
      * Converts the entry to XML string.
-     * @param options.baseUrl - Base URL to resolve relative links (optional).
-     * @param options.prettyPrint - Whether to pretty print the XML (default: true).
+     * @param options Serialization options.
      * @returns XML string representing the entry
      */
-    toXml({
-        baseUrl,
-        prettyPrint = true,
-    }: { baseUrl?: string; prettyPrint?: boolean } = {}): string {
+    toXml({ baseUrl, prettyPrint = true }: SerializationOptions = {}): string {
         const serializer = new EntryXmlSerializer(this);
         return serializer.serialize({ baseUrl, prettyPrint });
     }

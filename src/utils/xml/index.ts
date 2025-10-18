@@ -7,7 +7,6 @@ export { AtomXmlParser } from './AtomXmlParser';
 export { FeedXmlParser } from './FeedXmlParser';
 export { EntryXmlParser } from './EntryXmlParser';
 export type {
-    SerializationOptions,
     XmlSerializable,
     AtomElementBuilder,
     ParsedXmlElement,

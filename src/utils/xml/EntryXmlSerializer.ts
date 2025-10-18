@@ -1,6 +1,6 @@
 import { Entry } from '../../versions/v1_2/entry';
 import { AtomEntryBuilder } from './AtomEntryBuilder';
-import { SerializationOptions } from './types';
+import { SerializationOptions } from '../../versions/v1_2/types';
 
 export class EntryXmlSerializer {
     constructor(private entry: Entry) {}

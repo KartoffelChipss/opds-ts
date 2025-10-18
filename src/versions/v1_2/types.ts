@@ -10,6 +10,17 @@ export type AcquisitionRel =
     | 'preview'
     | 'subscribe';
 
+export interface SerializationOptions {
+    /**
+     * Base URL to resolve relative links (optional).
+     */
+    baseUrl?: string;
+    /**
+     * Whether to pretty print the XML (default: true).
+     */
+    prettyPrint?: boolean;
+}
+
 export interface Link {
     rel: string;
     href: string;

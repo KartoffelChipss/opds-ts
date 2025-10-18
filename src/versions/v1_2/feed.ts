@@ -1,4 +1,10 @@
-import { FeedKind, FeedOptions, Link, NavigationRel } from './types';
+import {
+    FeedKind,
+    FeedOptions,
+    Link,
+    NavigationRel,
+    SerializationOptions,
+} from './types';
 import { Entry } from './entry';
 import { FeedXmlSerializer } from '../../utils/xml';
 import { FeedXmlParser } from '../../utils/xml/FeedXmlParser';
@@ -248,14 +254,10 @@ export class Feed {
 
     /**
      * Converts the feed to an OPDS/Atom XML string.
-     * @param options.baseUrl - Base URL to resolve relative links (optional).
-     * @param options.prettyPrint - Whether to pretty print the XML (default: true).
+     * @param options Serialization options.
      * @return The feed as an XML string.
      */
-    toXml({
-        baseUrl,
-        prettyPrint = true,
-    }: { baseUrl?: string; prettyPrint?: boolean } = {}) {
+    toXml({ baseUrl, prettyPrint = true }: SerializationOptions = {}) {
         const serializer = new FeedXmlSerializer(this);
         return serializer.serialize({ baseUrl, prettyPrint });
     }

@@ -1,10 +1,5 @@
 import { Link } from '../../versions/v1_2/types';
 
-export interface SerializationOptions {
-    baseUrl?: string;
-    prettyPrint?: boolean;
-}
-
 export interface XmlSerializable {
     id: string;
     title: string;
