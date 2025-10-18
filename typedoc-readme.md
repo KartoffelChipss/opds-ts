@@ -1,6 +1,6 @@
 [![npm](https://img.shields.io/npm/v/opds-ts?label=Version&color=%23366fb4)](https://www.npmjs.com/package/opds-ts) [![npm](https://img.shields.io/npm/dt/opds-ts?label=Downloads)](https://www.npmjs.com/package/opds-ts) [![Discord](https://discord.com/api/guilds/990295419005333554/widget.png)](https://strassburger.org/discord)
 
-A TypeScript library for generating **OPDS feeds** (v1.2) with a fluent API. Designed to be extendable for future OPDS v2 support.
+A TypeScript library for generating and parsing **OPDS feeds** (v1.2) with a fluent API. Designed to be extendable for future OPDS v2 support.
 
 ## Features
 
