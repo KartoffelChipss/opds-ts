@@ -5,6 +5,7 @@ import {
     Link,
 } from '../../model/types';
 import { EntryXmlSerializer } from '../../utils/xml/EntryXmlSerializer';
+import { EntryXmlParser } from '../../utils/xml/EntryXmlParser';
 
 /**
  * An entry in an OPDS feed.
@@ -124,8 +125,8 @@ export class Entry {
 
     /**
      * Adds a page stream link to the entry. This is a convenience method for adding a page stream link with the appropriate rel and properties. This is using the [OPDS Page Stream Extension](https://anansi-project.github.io/docs/category/opds-page-streaming-extension).
-     * @param href - The URL of the page stream link. (Replaces {pageNumber} with the actual page number when requesting a specific page.)
-     * @param type - The type of the page stream link (e.g., image/jpeg).
+     * @param href - The URL of the page stream link. (Replaces `{pageNumber}` with the actual page number when requesting a specific page.)
+     * @param type - The type of the page stream link (e.g., `image/jpeg`).
      * @param pageCount - The total number of pages in the resource.
      * @returns The Entry instance (for chaining).
      */
@@ -223,5 +224,14 @@ export class Entry {
     }: { baseUrl?: string; prettyPrint?: boolean } = {}): string {
         const serializer = new EntryXmlSerializer(this);
         return serializer.serialize({ baseUrl, prettyPrint });
+    }
+
+    /**
+     * Creates an Entry instance from an XML string.
+     * @param xmlString - The XML string representing an entry.
+     * @returns A new Entry instance.
+     */
+    static fromXml(xmlString: string): Entry {
+        return EntryXmlParser.fromXml(xmlString);
     }
 }

@@ -21,3 +21,14 @@ export interface AtomElementBuilder<T extends XmlSerializable> {
     build(prettyPrint?: boolean): string;
     getRoot(): any;
 }
+
+export interface ParsedXmlElement {
+    [key: string]: any;
+}
+
+export interface XmlParseOptions {
+    ignoreAttributes?: boolean;
+    attributeNamePrefix?: string;
+    parseAttributeValue?: boolean;
+    trimValues?: boolean;
+}

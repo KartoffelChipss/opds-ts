@@ -1,6 +1,7 @@
 import { FeedKind, FeedOptions, Link, NavigationRel } from '../../model/types';
 import { Entry } from './entry';
 import { FeedXmlSerializer } from '../../utils/xml';
+import { FeedXmlParser } from '../../utils/xml/FeedXmlParser';
 
 export class Feed {
     private options: FeedOptions;
@@ -257,5 +258,14 @@ export class Feed {
     }: { baseUrl?: string; prettyPrint?: boolean } = {}) {
         const serializer = new FeedXmlSerializer(this);
         return serializer.serialize({ baseUrl, prettyPrint });
+    }
+
+    /**
+     * Creates a Feed instance from an XML string.
+     * @param xmlString - The XML string representing a feed.
+     * @returns A new Feed instance.
+     */
+    static fromXml(xmlString: string): Feed {
+        return FeedXmlParser.fromXml(xmlString);
     }
 }
