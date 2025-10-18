@@ -41,6 +41,14 @@ export class Feed {
     }
 
     /**
+     * Gets the current entries in the feed.
+     * @returns The array of entries.
+     */
+    getEntries() {
+        return this.entries;
+    }
+
+    /**
      * Sets the updated date of the feed.
      * @param updated - The updated date in ISO 8601 format.
      * @returns The Feed instance (for chaining).
@@ -48,6 +56,14 @@ export class Feed {
     setUpdated(updated: string) {
         this.options.updated = updated;
         return this;
+    }
+
+    /**
+     * Gets the updated date of the feed.
+     * @returns The updated date in ISO 8601 format.
+     */
+    getUpdated() {
+        return this.options.updated;
     }
 
     /**
@@ -61,6 +77,14 @@ export class Feed {
     }
 
     /**
+     * Gets the kind of the feed.
+     * @returns The kind of the feed.
+     */
+    getKind() {
+        return this.options.kind;
+    }
+
+    /**
      * Sets the author of the feed.
      * @param author - The author of the feed.
      * @returns The Feed instance (for chaining).
@@ -71,6 +95,14 @@ export class Feed {
     }
 
     /**
+     * Gets the author of the feed.
+     * @returns The author of the feed.
+     */
+    getAuthor() {
+        return this.options.author;
+    }
+
+    /**
      * Sets the language of the feed.
      * @param lang - The language of the feed. (e.g. 'en', 'de', etc.)
      * @returns The Feed instance (for chaining).
@@ -78,6 +110,14 @@ export class Feed {
     setLang(lang: string) {
         this.options.lang = lang;
         return this;
+    }
+
+    /**
+     * Gets the language of the feed.
+     * @returns The language of the feed.
+     */
+    getLang() {
+        return this.options.lang;
     }
 
     /**
@@ -118,6 +158,14 @@ export class Feed {
         }
         this.options.links.push(...links);
         return this;
+    }
+
+    /**
+     * Gets the current links in the entry.
+     * @returns The array of links.
+     */
+    getLinks() {
+        return this.options.links || [];
     }
 
     /**
