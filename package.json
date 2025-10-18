@@ -1,6 +1,6 @@
 {
     "name": "opds-ts",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "A TypeScript library for generating and parsing OPDS feeds with full TypeScript support.",
     "exports": {
         "./v1.2": {
@@ -16,7 +16,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "publish": "tsc && npm publish",
+        "publish": "rm -rf dist && tsc && npm publish",
         "format": "prettier --write 'src/**/*.{ts,tsx}'",
         "test": "tsc && jest src/tests --config jest.config.js",
         "testapp": "bun testapp/index.ts",
