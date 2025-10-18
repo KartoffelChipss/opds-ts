@@ -1,5 +1,7 @@
 export type FeedKind = 'navigation' | 'acquisition';
 
+export type NavigationRel = 'start' | 'previous' | 'next' | 'last' | 'first';
+
 export interface Link {
     rel: string;
     href: string;

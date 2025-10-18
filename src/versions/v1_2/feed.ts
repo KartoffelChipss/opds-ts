@@ -1,5 +1,5 @@
 import { create } from 'xmlbuilder2';
-import { FeedKind, FeedOptions, Link } from '../../model/types';
+import { FeedKind, FeedOptions, Link, NavigationRel } from '../../model/types';
 import { Entry } from './entry';
 import { applyBaseUrl } from '../../utils/url';
 
@@ -135,16 +135,59 @@ export class Feed {
     }
 
     /**
-     * Adds a start link to the feed. This is a convenience method for adding a start link with the appropriate rel and type.
-     * @param href - The URL of the start link.
+     * Gets the self link of the feed.
+     * @returns The self link, or undefined if not found.
+     */
+    getSelfLink(): Link | undefined {
+        const links = this.getLinks();
+        return links.find((link) => link.rel === 'self');
+    }
+
+    /**
+     * Adds a navigation link to the feed with the specified rel attribute.
+     * If a navigation link with the same rel already exists, it will be replaced.
+     * @param rel - The relationship type ('start', 'previous', 'next', 'last', 'first').
+     * @param href - The URL of the link.
      * @returns The Feed instance (for chaining).
      */
-    addStartLink(href: string) {
+    addNavigationLink(rel: NavigationRel, href: string) {
+        // Remove any existing navigation link with the same rel
+        if (this.options.links) {
+            this.options.links = this.options.links.filter(
+                (link) => link.rel !== rel
+            );
+        }
+
         return this.addLink({
-            rel: 'start',
+            rel,
             href,
             type: `application/atom+xml;profile=opds-catalog;kind=navigation`,
         });
+    }
+
+    /**
+     * Gets a navigation link from the feed by its rel attribute.
+     * @param rel - The relationship type ('start', 'previous', 'next', 'last', 'first').
+     * @returns The navigation link, or undefined if not found.
+     */
+    getNavigationLink(rel: NavigationRel): Link | undefined {
+        const links = this.getLinks();
+        return links.find((link) => link.rel === rel);
+    }
+
+    /**
+     * Adds multiple navigation links to the feed.
+     * If navigation links with the same rel already exist, they will be replaced.
+     * @param links - Object with navigation link types as keys and URLs as values.
+     * @returns The Feed instance (for chaining).
+     */
+    addNavigationLinks(links: Partial<Record<NavigationRel, string>>) {
+        Object.entries(links).forEach(([rel, href]) => {
+            if (href) {
+                this.addNavigationLink(rel as NavigationRel, href);
+            }
+        });
+        return this;
     }
 
     /**
@@ -153,14 +196,6 @@ export class Feed {
      */
     getOptions() {
         return this.options;
-    }
-
-    /**
-     * Gets the current entries in the feed.
-     * @returns The array of entries.
-     */
-    getEntries() {
-        return this.entries;
     }
 
     /**
