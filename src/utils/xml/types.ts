@@ -1,0 +1,23 @@
+import { Link } from '../../model/types';
+
+export interface SerializationOptions {
+    baseUrl?: string;
+    prettyPrint?: boolean;
+}
+
+export interface XmlSerializable {
+    id: string;
+    title: string;
+    updated?: string;
+    author?: string;
+    links?: Link[];
+    extra?: Record<string, any>;
+}
+
+export interface AtomElementBuilder<T extends XmlSerializable> {
+    setMetadata(options: T): this;
+    addLinks(links: Link[], baseUrl?: string): this;
+    addLink(link: Link, baseUrl?: string): this;
+    build(prettyPrint?: boolean): string;
+    getRoot(): any;
+}

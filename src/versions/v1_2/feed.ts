@@ -1,7 +1,6 @@
-import { create } from 'xmlbuilder2';
 import { FeedKind, FeedOptions, Link, NavigationRel } from '../../model/types';
 import { Entry } from './entry';
-import { applyBaseUrl } from '../../utils/url';
+import { FeedXmlSerializer } from '../../utils/xml';
 
 export class Feed {
     private options: FeedOptions;
@@ -256,52 +255,7 @@ export class Feed {
         baseUrl,
         prettyPrint = true,
     }: { baseUrl?: string; prettyPrint?: boolean } = {}) {
-        const root = create({ version: '1.0', encoding: 'utf-8' }).ele('feed', {
-            xmlns: 'http://www.w3.org/2005/Atom',
-            'xmlns:opds': 'http://opds-spec.org/2010/catalog',
-            'xmlns:dcterms': 'http://purl.org/dc/terms/',
-        });
-
-        if (this.options.lang) {
-            root.att('xml:lang', this.options.lang);
-        }
-
-        root.ele('id').txt(this.options.id).up();
-        root.ele('title').txt(this.options.title).up();
-        root.ele('updated')
-            .txt(this.options.updated || new Date().toISOString())
-            .up();
-
-        const authorName =
-            this.options.author ||
-            (this.options.extra && this.options.extra.author) ||
-            undefined;
-        if (authorName) {
-            root.ele('author').ele('name').txt(authorName).up().up();
-        }
-
-        for (const link of this.options.links || []) {
-            const href = applyBaseUrl(link.href, baseUrl);
-            const linkElement = root.ele('link');
-
-            const { properties, ...attrs } = link;
-            linkElement.att({ ...attrs, href });
-
-            if (properties && typeof properties === 'object') {
-                Object.entries(properties).forEach(([key, value]) => {
-                    linkElement.att(key, String(value));
-                });
-            }
-
-            linkElement.up();
-        }
-
-        for (const entry of this.entries) {
-            const entryXml = entry.toXml({ baseUrl, prettyPrint: false });
-            const frag = create(entryXml).root();
-            root.import(frag);
-        }
-
-        return root.end({ prettyPrint });
+        const serializer = new FeedXmlSerializer(this);
+        return serializer.serialize({ baseUrl, prettyPrint });
     }
 }

@@ -1,6 +1,5 @@
-import { create } from 'xmlbuilder2';
 import { EntryOptions, FeedKind, Link } from '../../model/types';
-import { applyBaseUrl } from '../../utils/url';
+import { EntryXmlSerializer } from '../../utils/xml/EntryXmlSerializer';
 
 /**
  * An entry in an OPDS feed.
@@ -188,6 +187,14 @@ export class Entry {
     }
 
     /**
+     * Gets the current links in the entry.
+     * @returns The array of links.
+     */
+    getLinks() {
+        return this.options.links || [];
+    }
+
+    /**
      * Gets the entry options.
      * @returns The entry options.
      */
@@ -205,59 +212,7 @@ export class Entry {
         baseUrl,
         prettyPrint = true,
     }: { baseUrl?: string; prettyPrint?: boolean } = {}): string {
-        const entryEl = create().ele('entry');
-        entryEl.ele('id').txt(this.options.id).up();
-        entryEl.ele('title').txt(this.options.title).up();
-        entryEl
-            .ele('updated')
-            .txt(this.options.updated || new Date().toISOString())
-            .up();
-
-        if (this.options.author) {
-            entryEl
-                .ele('author')
-                .ele('name')
-                .txt(this.options.author)
-                .up()
-                .up();
-        }
-
-        if (this.options.summary) {
-            entryEl
-                .ele('summary', { type: 'text' })
-                .txt(this.options.summary)
-                .up();
-        }
-
-        if (this.options.content) {
-            entryEl
-                .ele('content', { type: this.options.content.type || 'text' })
-                .txt(this.options.content.value)
-                .up();
-        }
-
-        for (const link of this.options.links || []) {
-            const href = applyBaseUrl(link.href, baseUrl);
-            const linkElement = entryEl.ele('link');
-
-            const { properties, ...attrs } = link;
-            linkElement.att({ ...attrs, href });
-
-            if (properties && typeof properties === 'object') {
-                Object.entries(properties).forEach(([key, value]) => {
-                    linkElement.att(key, String(value));
-                });
-            }
-
-            linkElement.up();
-        }
-
-        if (this.options.extra) {
-            Object.entries(this.options.extra).forEach(([key, value]) => {
-                entryEl.att(key, String(value));
-            });
-        }
-
-        return entryEl.end({ prettyPrint });
+        const serializer = new EntryXmlSerializer(this);
+        return serializer.serialize({ baseUrl, prettyPrint });
     }
 }
