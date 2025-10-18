@@ -1,6 +1,7 @@
 # Based on https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore
 
 testapp/
+test-consumer/
 docs/
 genCoverageRow.py
 

@@ -1,5 +1,5 @@
 import { create } from 'xmlbuilder2';
-import { EntryOptions } from '../../model/types';
+import { EntryOptions } from '../../versions/v1_2/types';
 import { BaseAtomBuilder } from './BaseAtomBuilder';
 
 export class AtomEntryBuilder extends BaseAtomBuilder<EntryOptions> {

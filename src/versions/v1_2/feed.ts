@@ -1,4 +1,4 @@
-import { FeedKind, FeedOptions, Link, NavigationRel } from '../../model/types';
+import { FeedKind, FeedOptions, Link, NavigationRel } from './types';
 import { Entry } from './entry';
 import { FeedXmlSerializer } from '../../utils/xml';
 import { FeedXmlParser } from '../../utils/xml/FeedXmlParser';

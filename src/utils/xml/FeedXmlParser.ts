@@ -1,4 +1,4 @@
-import { FeedOptions } from '../../model/types';
+import { FeedOptions } from '../../versions/v1_2/types';
 import { Feed } from '../../versions/v1_2/feed';
 import { Entry } from '../../versions/v1_2/entry';
 import { AtomXmlParser } from './AtomXmlParser';

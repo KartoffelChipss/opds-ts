@@ -1,5 +1,5 @@
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
-import { Link, EntryOptions, FeedOptions } from '../../model/types';
+import { Link, EntryOptions, FeedOptions } from '../../versions/v1_2/types';
 import { ParsedXmlElement, XmlParseOptions } from './types';
 
 export class AtomXmlParser {

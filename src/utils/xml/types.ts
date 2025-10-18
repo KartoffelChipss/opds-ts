@@ -1,4 +1,4 @@
-import { Link } from '../../model/types';
+import { Link } from '../../versions/v1_2/types';
 
 export interface SerializationOptions {
     baseUrl?: string;

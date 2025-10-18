@@ -1,6 +1,7 @@
 src/tests/
 dist/tests/
 testapp/
+test-consumer/
 jstestapp/
 examples/
 .idea/

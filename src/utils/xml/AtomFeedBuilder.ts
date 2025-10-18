@@ -1,5 +1,5 @@
 import { create } from 'xmlbuilder2';
-import { FeedOptions } from '../../model/types';
+import { FeedOptions } from '../../versions/v1_2/types';
 import { Entry } from '../../versions/v1_2/entry';
 import { BaseAtomBuilder } from './BaseAtomBuilder';
 

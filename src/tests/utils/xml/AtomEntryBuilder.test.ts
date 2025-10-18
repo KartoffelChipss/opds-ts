@@ -1,5 +1,5 @@
 import { AtomEntryBuilder } from '../../../utils/xml/AtomEntryBuilder';
-import { EntryOptions, Link } from '../../../model/types';
+import { EntryOptions, Link } from '../../../versions/v1_2/types';
 
 describe('AtomEntryBuilder', () => {
     let builder: AtomEntryBuilder;

@@ -1,9 +1,4 @@
-import {
-    AcquisitionRel,
-    EntryOptions,
-    FeedKind,
-    Link,
-} from '../../model/types';
+import { AcquisitionRel, EntryOptions, FeedKind, Link } from './types';
 import { EntryXmlSerializer } from '../../utils/xml/EntryXmlSerializer';
 import { EntryXmlParser } from '../../utils/xml/EntryXmlParser';
 

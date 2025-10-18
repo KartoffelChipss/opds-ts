@@ -1,4 +1,5 @@
 testapp/
+test-consumer/
 dist/
 .idea/
 node_modules/

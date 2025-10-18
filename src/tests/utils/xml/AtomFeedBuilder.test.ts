@@ -1,5 +1,5 @@
 import { AtomFeedBuilder } from '../../../utils/xml/AtomFeedBuilder';
-import { FeedOptions, Link } from '../../../model/types';
+import { FeedOptions, Link } from '../../../versions/v1_2/types';
 import { Entry } from '../../../versions/v1_2/entry';
 
 describe('AtomFeedBuilder', () => {

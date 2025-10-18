@@ -1,4 +1,4 @@
-import { EntryOptions } from '../../model/types';
+import { EntryOptions } from '../../versions/v1_2/types';
 import { Entry } from '../../versions/v1_2/entry';
 import { AtomXmlParser } from './AtomXmlParser';
 
