@@ -1,4 +1,8 @@
-import { EntryOptions } from '../../versions/v1_2/types';
+import {
+    DCMetadata,
+    EntryOptions,
+    simpleDcTextFields,
+} from '../../versions/v1_2/types';
 import { Entry } from '../../versions/v1_2/entry';
 import { AtomXmlParser } from './AtomXmlParser';
 
@@ -74,6 +78,9 @@ export class EntryXmlParser extends AtomXmlParser {
         const rights = this.extractText(entryElement.rights);
         if (rights) options.rights = rights;
 
+        const dcMetadata = this.parseDcMetadata(entryElement);
+        if (dcMetadata) options.dcMetadata = dcMetadata;
+
         if (entryElement.content) {
             const contentType =
                 this.extractAttribute(entryElement.content, 'type') || 'text';
@@ -109,5 +116,64 @@ export class EntryXmlParser extends AtomXmlParser {
         }
 
         return options;
+    }
+
+    private parseDcMetadata(entryElement: any): DCMetadata | undefined {
+        const dc: DCMetadata = {};
+
+        for (const field of simpleDcTextFields) {
+            const value = this.extractText(entryElement[`dc:${field}`]);
+            if (value) {
+                (dc as any)[field] = value;
+            }
+        }
+
+        const identifiers = this.extractMultipleText(
+            entryElement['dc:identifier']
+        );
+        if (identifiers && identifiers.length > 0) {
+            dc.identifiers = identifiers;
+        }
+
+        const subjects = this.extractMultipleText(entryElement['dc:subject']);
+        if (subjects && subjects.length > 0) {
+            dc.subjects = subjects;
+        }
+
+        const references = this.extractMultipleText(
+            entryElement['dc:references']
+        );
+        if (references && references.length > 0) {
+            dc.references = references;
+        }
+
+        const isReferencedBy = this.extractMultipleText(
+            entryElement['dc:isReferencedBy']
+        );
+        if (isReferencedBy && isReferencedBy.length > 0) {
+            dc.isReferencedBy = isReferencedBy;
+        }
+
+        const contributorElements = this.ensureArray(
+            entryElement['dc:contributor']
+        );
+        if (contributorElements && contributorElements.length > 0) {
+            const contributors: string[] = [];
+            for (const contributorEl of contributorElements) {
+                const name = this.extractText(contributorEl.name);
+                if (name) {
+                    contributors.push(name);
+                }
+            }
+            if (contributors.length > 0) {
+                dc.contributors = contributors;
+            }
+        }
+
+        if (Object.keys(dc).length === 0) {
+            return undefined;
+        }
+
+        return dc;
     }
 }

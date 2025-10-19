@@ -12,14 +12,14 @@ export class AtomFeedBuilder extends BaseAtomBuilder<FeedOptions> {
         });
     }
 
-    protected initializeRoot(): void {
+    protected override initializeRoot(): void {
         this.root = create({ version: '1.0', encoding: 'utf-8' }).ele(
             this.elementName,
             this.namespaces
         );
     }
 
-    protected addCoreMetadata(options: FeedOptions): void {
+    protected override addCoreMetadata(options: FeedOptions): void {
         if (options.lang) {
             this.root.att('xml:lang', options.lang);
         }
@@ -38,7 +38,7 @@ export class AtomFeedBuilder extends BaseAtomBuilder<FeedOptions> {
         this.addAuthorIfPresent(authorName);
     }
 
-    protected addExtraContent(options: FeedOptions): void {}
+    protected override addExtraContent(options: FeedOptions): void {}
 
     /**
      * Adds entries to the feed.

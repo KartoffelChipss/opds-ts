@@ -1,5 +1,6 @@
 import {
     AcquisitionRel,
+    DCMetadata,
     EntryOptions,
     FeedKind,
     Link,
@@ -29,9 +30,9 @@ export class Entry {
 
     constructor(param1: EntryOptions | string, param2?: string) {
         if (typeof param1 === 'string' && param2 !== undefined) {
-            this.options = { id: param1, title: param2 };
+            this.options = { id: param1, title: param2, dcMetadata: {} };
         } else if (typeof param1 === 'object') {
-            this.options = { ...param1 };
+            this.options = { ...param1, dcMetadata: param1.dcMetadata || {} };
         } else {
             throw new Error('Invalid constructor arguments');
         }
@@ -247,6 +248,41 @@ export class Entry {
      */
     getRights() {
         return this.options.rights;
+    }
+
+    /**
+     * Sets the DC metadata of the entry.
+     * @param dcMetadata - The DC metadata object.
+     * @returns The Entry instance (for chaining).
+     */
+    setDcMetadata(dcMetadata: DCMetadata) {
+        this.options.dcMetadata = dcMetadata;
+        return this;
+    }
+
+    /**
+     * Sets a specific field in the DC metadata of the entry.
+     * @param key - The key of the DC metadata field.
+     * @param value - The value to set for the specified field.
+     * @returns The Entry instance (for chaining).
+     */
+    setDcMetadataField<K extends keyof DCMetadata>(
+        key: K,
+        value: DCMetadata[K]
+    ) {
+        if (!this.options.dcMetadata) {
+            this.options.dcMetadata = {};
+        }
+        this.options.dcMetadata[key] = value;
+        return this;
+    }
+
+    /**
+     * Gets the DC metadata of the entry.
+     * @returns The DC metadata.
+     */
+    getDcMetadata(): DCMetadata {
+        return this.options.dcMetadata || {};
     }
 
     /**

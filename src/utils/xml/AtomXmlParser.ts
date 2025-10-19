@@ -62,6 +62,27 @@ export class AtomXmlParser {
     }
 
     /**
+     * Extarcts multiple text from multiple elements. (e.g. multiple dc:identifier)
+     * @param element - The element(s) to extract text from.
+     * @returns The array of text content or undefined.
+     */
+    extractMultipleText(element: any): string[] | undefined {
+        if (!element) return undefined;
+
+        const elements = Array.isArray(element) ? element : [element];
+        const texts: string[] = [];
+
+        for (const el of elements) {
+            const text = this.extractText(el);
+            if (text) {
+                texts.push(text);
+            }
+        }
+
+        return texts.length > 0 ? texts : undefined;
+    }
+
+    /**
      * Extracts attribute value from an element.
      * @param element - The element to extract attribute from.
      * @param attributeName - The name of the attribute.
