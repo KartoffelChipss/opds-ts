@@ -34,6 +34,7 @@ export class EntryXmlParser extends AtomXmlParser {
         if (options.updated) entry.setUpdated(options.updated);
         if (options.summary) entry.setSummary(options.summary);
         if (options.content) entry.setContent(options.content);
+        if (options.rights) entry.setRights(options.rights);
 
         // Links are already included in the options, no need to add them again
 
@@ -69,6 +70,9 @@ export class EntryXmlParser extends AtomXmlParser {
 
         const summary = this.extractText(entryElement.summary);
         if (summary) options.summary = summary;
+
+        const rights = this.extractText(entryElement.rights);
+        if (rights) options.rights = rights;
 
         if (entryElement.content) {
             const contentType =
