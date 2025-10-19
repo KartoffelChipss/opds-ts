@@ -15,7 +15,7 @@ describe('AtomFeedBuilder', () => {
         expect(xml).toContain('<?xml version="1.0" encoding="utf-8"?>');
         expect(xml).toContain('<feed xmlns="http://www.w3.org/2005/Atom"');
         expect(xml).toContain('xmlns:opds="http://opds-spec.org/2010/catalog"');
-        expect(xml).toContain('xmlns:dcterms="http://purl.org/dc/terms/"');
+        expect(xml).toContain('xmlns:dc="http://purl.org/dc/terms/"');
     });
 
     it('should set feed metadata correctly', () => {

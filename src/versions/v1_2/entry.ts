@@ -154,6 +154,14 @@ export class Entry {
     }
 
     /**
+     * Gets the summary of the entry.
+     * @returns The summary text.
+     */
+    getSummary() {
+        return this.options.summary;
+    }
+
+    /**
      * Sets the content of the entry.
      * @param content - The content object with type and value.
      * @returns The Entry instance (for chaining).
@@ -161,6 +169,14 @@ export class Entry {
     setContent(content: { type?: string; value: string }) {
         this.options.content = content;
         return this;
+    }
+
+    /**
+     * Gets the content of the entry.
+     * @returns The content object.
+     */
+    getContent() {
+        return this.options.content;
     }
 
     /**
@@ -174,6 +190,14 @@ export class Entry {
     }
 
     /**
+     * Gets the author information of the entry.
+     * @returns The author information.
+     */
+    getAuthor() {
+        return this.options.author;
+    }
+
+    /**
      * Sets the updated date of the entry.
      * @param updated - The updated date in ISO 8601 format.
      * @returns The Entry instance (for chaining).
@@ -184,6 +208,14 @@ export class Entry {
     }
 
     /**
+     * Gets the updated date of the entry.
+     * @returns The updated date.
+     */
+    getUpdated() {
+        return this.options.updated;
+    }
+
+    /**
      * Sets the rights information for the entry.
      * @param rights - The rights information.
      * @returns The Entry instance (for chaining).
@@ -191,6 +223,14 @@ export class Entry {
     setRights(rights: string) {
         this.options.rights = rights;
         return this;
+    }
+
+    /**
+     * Gets the rights information of the entry.
+     * @returns The rights information.
+     */
+    getRights() {
+        return this.options.rights;
     }
 
     /**
