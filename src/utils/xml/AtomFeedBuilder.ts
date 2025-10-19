@@ -8,7 +8,7 @@ export class AtomFeedBuilder extends BaseAtomBuilder<FeedOptions> {
         super('feed', {
             xmlns: 'http://www.w3.org/2005/Atom',
             'xmlns:opds': 'http://opds-spec.org/2010/catalog',
-            'xmlns:dcterms': 'http://purl.org/dc/terms/',
+            'xmlns:dc': 'http://purl.org/dc/terms/',
         });
     }
 

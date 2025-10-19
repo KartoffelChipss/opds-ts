@@ -184,6 +184,16 @@ export class Entry {
     }
 
     /**
+     * Sets the rights information for the entry.
+     * @param rights - The rights information.
+     * @returns The Entry instance (for chaining).
+     */
+    setRights(rights: string) {
+        this.options.rights = rights;
+        return this;
+    }
+
+    /**
      * Adds extra metadata to the entry.
      * @param key - The key for the extra metadata.
      * @param value - The value for the extra metadata.

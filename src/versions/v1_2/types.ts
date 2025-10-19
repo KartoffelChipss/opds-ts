@@ -35,6 +35,7 @@ export interface EntryOptions {
     title: string;
     updated?: string;
     author?: string;
+    rights?: string;
     summary?: string;
     content?: { type?: string; value: string };
     links?: Link[];

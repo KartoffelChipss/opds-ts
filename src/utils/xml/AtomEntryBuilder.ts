@@ -19,6 +19,13 @@ export class AtomEntryBuilder extends BaseAtomBuilder<EntryOptions> {
             .txt(options.updated || new Date().toISOString())
             .up();
 
+        if (options.rights) {
+            this.root
+                .ele('rights')
+                .txt(options.rights || '')
+                .up();
+        }
+
         this.addAuthorIfPresent(options.author);
     }
 
