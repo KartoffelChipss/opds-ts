@@ -27,6 +27,22 @@ export class Feed {
     }
 
     /**
+     * Gets the ID of the feed.
+     * @returns The ID of the feed.
+     */
+    getId() {
+        return this.options.id;
+    }
+
+    /**
+     * Gets the title of the feed.
+     * @returns The title of the feed.
+     */
+    getTitle() {
+        return this.options.title;
+    }
+
+    /**
      * Adds one or more entries to the feed.
      * @param entries - The entries to add.
      * @returns The Feed instance (for chaining).

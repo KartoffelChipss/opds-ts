@@ -38,6 +38,22 @@ export class Entry {
     }
 
     /**
+     * Gets the ID of the entry.
+     * @returns The ID of the entry.
+     */
+    getId() {
+        return this.options.id;
+    }
+
+    /**
+     * Gets the title of the entry.
+     * @returns The title of the entry.
+     */
+    getTitle() {
+        return this.options.title;
+    }
+
+    /**
      * Adds one or more links to the feed.
      * @param links - The links to add.
      * @returns The Feed instance (for chaining).
