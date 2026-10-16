@@ -3,12 +3,7 @@ export type FeedKind = 'navigation' | 'acquisition';
 export type NavigationRel = 'start' | 'previous' | 'next' | 'last' | 'first';
 
 export type AcquisitionRel =
-    | 'open-access'
-    | 'borrow'
-    | 'buy'
-    | 'sample'
-    | 'preview'
-    | 'subscribe';
+    'open-access' | 'borrow' | 'buy' | 'sample' | 'preview' | 'subscribe';
 
 export interface SerializationOptions {
     /**
