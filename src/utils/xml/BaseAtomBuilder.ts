@@ -2,9 +2,9 @@ import { Link } from '../../versions/v1_2/types';
 import { applyBaseUrl } from '../url';
 import { XmlSerializable, AtomElementBuilder } from './types';
 
-export abstract class BaseAtomBuilder<T extends XmlSerializable>
-    implements AtomElementBuilder<T>
-{
+export abstract class BaseAtomBuilder<
+    T extends XmlSerializable,
+> implements AtomElementBuilder<T> {
     protected root: any;
 
     constructor(

@@ -28,8 +28,8 @@ importers:
         specifier: ^30.5.2
         version: 30.5.2(@types/node@24.12.4)
       prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
+        specifier: ^3.9.10
+        version: 3.9.10
       ts-jest:
         specifier: ^29.4.15
         version: 29.4.15(@babel/core@7.29.0)(@jest/transform@30.5.2)(@jest/types@30.5.1)(babel-jest@30.5.2(@babel/core@7.29.0))(jest-util@30.5.1)(jest@30.5.2(@types/node@24.12.4))(typescript@5.9.3)
@@ -1378,8 +1378,8 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3247,7 +3247,7 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  prettier@3.8.3: {}
+  prettier@3.9.10: {}
 
   pretty-format@30.2.0:
     dependencies:
