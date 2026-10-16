@@ -16,7 +16,6 @@
     },
     "scripts": {
         "build": "tsc",
-        "publish": "rm -rf dist && tsc && npm publish",
         "format": "prettier --write 'src/**/*.{ts,tsx}'",
         "test": "tsc && jest src/tests --config jest.config.js",
         "testapp": "bun testapp/index.ts",
