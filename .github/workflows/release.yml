@@ -1,0 +1,33 @@
+name: Release
+
+on:
+    release:
+        types: [published]
+
+jobs:
+    test:
+        uses: ./.github/workflows/test.yml
+
+    publish:
+        needs: test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            id-token: write
+        steps:
+            - uses: actions/checkout@v5
+            - uses: pnpm/action-setup@v4
+            - uses: actions/setup-node@v5
+              with:
+                  node-version: 24
+                  cache: pnpm
+            - name: Tag matches package.json version
+              run: |
+                  version="$(node -p "require('./package.json').version")"
+                  if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+                    echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+                    exit 1
+                  fi
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm build
+            - run: npm publish
